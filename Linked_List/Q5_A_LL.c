@@ -80,9 +80,9 @@ int main()
 			printf("Back linked list: ");
 			printList(&resultBackList);
 			printf("\n");
-			removeAllItems(&ll);
-			removeAllItems(&resultFrontList);
-			removeAllItems(&resultBackList);
+			// removeAllItems(&ll);
+			// removeAllItems(&resultFrontList);
+			// removeAllItems(&resultBackList);
 			break;
 		case 0:
 			removeAllItems(&ll);
@@ -102,7 +102,39 @@ int main()
 
 void frontBackSplitLinkedList(LinkedList *ll, LinkedList *resultFrontList, LinkedList *resultBackList)
 {
-	/* add your code here */
+	ListNode *cur, *next, *temp;
+
+	
+	int len = ll->size;
+	int mid = 0;
+
+	temp = ll->head;
+	cur = ll->head;
+
+	// 범위설정
+	if (len % 2 == 0){
+		mid = len/2;
+	} else { mid = len/2 + 1; }
+
+	resultFrontList->head = NULL;
+	resultBackList->head = NULL;
+
+
+	for (int i = 0 ; i < mid; i++){
+		if(i==0){
+			next = cur->next;
+			cur->next =NULL;
+			resultBackList->head = next;
+			resultFrontList->head = cur;
+		} else {
+			temp = next;
+			next = next->next;
+			resultBackList->head = next;
+			temp->next = NULL;
+			cur->next = temp;
+			cur = cur->next;
+		}	
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////////

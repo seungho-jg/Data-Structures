@@ -86,7 +86,79 @@ int main()
 
 void moveOddItemsToBack(LinkedList *ll)
 {
-	/* add your code here */
+		ListNode *cur, *tail, *prev;
+
+		cur = ll->head;
+		prev = NULL;
+		tail = ll->head;
+		while (tail->next != NULL){
+			tail = tail->next;
+		}
+		int len = ll->size;
+		
+		for(int i = 0; i < len;i++){
+			// 홀수
+			if(cur->item % 2 != 0){
+				// 처음값이 홀수 일때
+				if (cur == ll->head){
+					ll->head = cur->next;
+				}
+				else {
+					prev->next = cur->next;
+				}
+				tail->next = cur;
+				tail = cur;
+				cur->next = NULL;
+				// cur
+				if (prev == NULL){
+					cur = ll->head;
+				}else{cur = prev->next;}
+
+			}else{
+				// 짝수인 경우
+				prev = cur;
+				cur = cur->next;
+			}
+
+		}
+
+
+
+
+	// ListNode *cur, *cur2, *prev, *last;
+	// LinkedList *temp;
+	
+	// // 배열의 길이
+	// int len = ll->size;
+
+	// cur = ll->head;
+	// cur2 = temp->head;
+	// prev = ll->head;
+	// last = ll->head;
+	// temp = malloc(sizeof(LinkedList));
+
+	// for (int i =0; i<len; i++){
+	// 	if (cur == NULL){
+	// 		break;
+	// 	}
+	// 	if (cur->item % 2 != 0 ){
+	// 		// 처음값이 홀수일경우
+	// 		if (i==0){
+	// 			ll->head = cur->next;
+	// 			cur = cur->next;
+	// 			cur2 = cur;
+	// 		}
+	// 		temp = cur;
+	// 		prev->next = cur->next;
+	// 		cur = cur->next;
+	// 		temp = temp->next;
+	// 	}
+	// 	last= cur;
+	// 	cur= cur->next;
+	// 	temp = temp->next;
+	// }
+	// last->next = temp->next;
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////////

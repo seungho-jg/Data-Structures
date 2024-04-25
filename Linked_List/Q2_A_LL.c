@@ -78,7 +78,7 @@ int main()
 			printList(&ll2);
 			break;
 		case 3:
-		    printf("The resulting linked lists after merging the given linked list are:\n");
+		  printf("The resulting linked lists after merging the given linked list are:\n");
 			alternateMergeLinkedList(&ll1, &ll2); // You need to code this function
 			printf("The resulting linked list 1: ");
 			printList(&ll1);
@@ -103,7 +103,27 @@ int main()
 
 void alternateMergeLinkedList(LinkedList *ll1, LinkedList *ll2)
 {
-    /* add your code here */
+	ListNode *temp, *cur1, *cur2;
+	
+	if (ll1->head == NULL || ll2->head == NULL){
+		printf("error");
+	}
+	// ll1의 크기만큼 for문
+	cur1 = ll1->head;
+	cur2 = ll2->head;
+	int len = ll1->size;
+	for (int i = 0; i<len;i++){
+		if (cur1 == NULL || cur2 == NULL){
+			break;
+		}
+		temp = cur2;
+		ll2->head = cur2->next;
+		temp->next = cur1->next;
+		cur1->next = temp;
+		cur1 = temp->next;
+		cur2 = ll2->head;
+	}
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////////

@@ -54,8 +54,8 @@ int main()
     Stack s;
 
     s.ll.head=NULL;
-	s.ll.size =0;
-	s.ll.tail =NULL;
+		s.ll.size =0;
+		s.ll.tail =NULL;
 
     c =1;
 
@@ -102,8 +102,31 @@ int main()
 /////////////////////////////////////////////////////////////////////////////////
 
 int isStackPairwiseConsecutive(Stack *s)
-{
-  /* add your code here */
+{	
+	int a, b;
+	while (!isEmptyStack(s))
+	{
+		a = pop(s);
+		b = pop(s);
+		if (a-b != 1 && a-b !=-1){
+			return 0;
+		}
+	}
+	return 1;
+	
+  // ListNode *prev, *cur;
+	// prev = s->ll.head;
+	// cur = s->ll.head->next;
+	// while(cur != NULL);
+	// {
+	// 	printf("%d,%d\n", prev->item, cur->item);
+	// 	if (prev->item - cur->item != 1){
+	// 		return 0;
+	// 	}
+	// 	cur = cur->next->next;
+	// 	prev = prev->next->next;
+	// }
+	// return 1;
 }
 
 //////////////////////////////////////////////////////////////////////////////////
